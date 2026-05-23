@@ -1,0 +1,88 @@
+.hero {
+    background-color: #CD3F3B;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.sort-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.sort-buttons button {
+    background: white;
+    border: 2px solid #CD3F3B;
+    color: #CD3F3B;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sort-buttons button:hover,
+.sort-buttons button.active {
+    background: #CD3F3B;
+    color: white;
+}
+
+.pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1000px;
+}
+
+.pokemon-grid div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.pokemon-grid div:hover {
+    transform: scale(1.05);
+}
+
+.pokemon-grid img {
+    width: 80px;
+    height: 80px;
+}
+
+.pokemon-grid p {
+    font-size: 13px;
+    font-weight: bold;
+    color: #444;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.empty-message {
+    color: #999;
+    font-size: 1.1rem;
+    margin-top: 50px;
+}

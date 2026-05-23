@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéDex - Caça</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/hunt.css">
+    <link rel="icon" href="/icon.png">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="https://img.icons8.com/color/48/pokeball--v1.png" alt="Pokeball">
+            <h1>PokéDex</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Inici</a></li>
+                <li><a href="my_pokemons.html">Els meus Pokémon</a></li>
+                <li><a href="hunt.html" class="active">Caça</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="huntZone" class="hunt-zone">    
+            <div id="pokemonPopup" class="pokemon-popup hidden">
+                <p id="popupTitle"></p>
+                <img id="wildPokemonImg" class="silhouette" src="" alt="Pokemon salvatge">
+                <button id="fightBtn">¡Lluitar!</button>
+            </div>
+        </div>
+    </main>
+    <script src="src/api.js"></script>
+    <script src="src/pokemon.js"></script>
+    <script src="src/storage.js"></script>
+    <script src="src/hunt.js"></script>
+</body>
+</html>

@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pràctica: PokéDex Web — Enunciat i Rúbrica</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+        :root {
+            --red: #e63946;
+            --red-light: #fdecea;
+            --blue: #1d3557;
+            --blue-mid: #457b9d;
+            --blue-light: #e8f4f8;
+            --green: #2d6a4f;
+            --green-light: #e8f5ef;
+            --yellow: #f4a261;
+            --yellow-light: #fef5ec;
+            --purple: #6d28d9;
+            --purple-light: #ede9fe;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-600: #6c757d;
+            --gray-800: #343a40;
+            --gray-900: #212529;
+            --white: #fff;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+            --radius: 10px;
+            --font: 'DM Sans', sans-serif;
+            --mono: 'DM Mono', monospace;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--gray-100);
+            color: var(--gray-900);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* COVER */
+        .cover {
+            background: var(--blue);
+            color: white;
+            padding: 3.5rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .cover-tag {
+            display: inline-block;
+            background: var(--red);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.9rem;
+            border-radius: 999px;
+            margin-bottom: 1.25rem;
+        }
+
+        .cover h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        .cover h1 span {
+            color: #f4a261;
+        }
+
+        .cover-sub {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.72);
+            max-width: 560px;
+            margin: 0 auto 2rem;
+        }
+
+        .cover-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cover-meta-item {
+            text-align: center;
+        }
+
+        .cover-meta-item .label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .cover-meta-item .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        /* MODULE PILLS */
+        .module-pills {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .mpill {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        .mpill-0612 {
+            background: rgba(69, 123, 157, 0.5);
+        }
+
+        .mpill-0485 {
+            background: rgba(45, 106, 79, 0.5);
+        }
+
+        .mpill-0615 {
+            background: rgba(244, 162, 97, 0.4);
+        }
+
+        .mpill-0489 {
+            background: rgba(109, 40, 217, 0.4);
+        }
+
+        /* LAYOUT */
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+        }
+
+        /* SECTION */
+        .section {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 1.1rem 1.75rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-header .num {
+            background: var(--red);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-header h2 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--blue);
+        }
+
+        .section-body {
+            padding: 1.75rem;
+        }
+
+        /* TEXT */
+        p {
+            margin-bottom: 0.9rem;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        h3:first-child {
+            margin-top: 0;
+        }
+
+        ul,
+        ol {
+            padding-left: 1.5rem;
+            margin-bottom: 0.9rem;
+        }
+
+        li {
+            margin-bottom: 0.35rem;
+        }
+
+        /* CALLOUTS */
+        .callout {
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            border-left: 4px solid;
+        }
+
+        .callout-red {
+            background: var(--red-light);
+            border-color: var(--red);
+            color: #7f1d1d;
+        }
+
+        .callout-blue {
+            background: var(--blue-light);
+            border-color: var(--blue-mid);
+            color: #1e3a5f;
+        }
+
+        .callout-green {
+            background: var(--green-light);
+            border-color: var(--green);
+            color: #1a4731;
+        }
+
+        .callout-yellow {
+            background: var(--yellow-light);
+            border-color: var(--yellow);
+            color: #7c4a0d;
+        }
+
+        .callout-purple {
+            background: var(--purple-light);
+            border-color: var(--purple);
+            color: #3b0764;
+        }
+
+        .callout strong {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        /* FEATURE GRID */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card {
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 1.1rem;
+        }
+
+        .feature-card .fc-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--blue);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .fc-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            letter-spacing: 0.05em;
+        }
+
+        .fc-badge-required {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .fc-badge-optional {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .fc-badge-new {
+            background: #ede9fe;
+            color: #5b21b6;
+        }
+
+        .feature-card ul {
+            padding-left: 1.1rem;
+            margin: 0;
+            font-size: 0.875rem;
+        }
+
+        .feature-card li {
+            margin-bottom: 0.2rem;
+            color: var(--gray-800);
+        }
+
+        /* CODE */
+        pre {
+            background: var(--gray-900);
+            color: #e5e7eb;
+            border-radius: 8px;
+            padding: 1.1rem 1.25rem;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        code {
+            font-family: var(--mono);
+            font-size: 0.83em;
+            background: var(--gray-200);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            color: var(--blue);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+            font-size: 1em;
+            border-radius: 0;
+        }
+
+        .cm {
+            color: #6b7280;
+        }
+
+        .ck {
+            color: #93c5fd;
+        }
+
+        .cs {
+            color: #86efac;
+        }
+
+        .cv {
+            color: #fca5a5;
+        }
+
+        .cn {
+            color: #fde68a;
+        }
+
+        .cf {
+            color: #c4b5fd;
+        }
+
+        /* FILE TREE */
+        .file-tree {
+            background: var(--gray-900);
+            border-radius: 8px;
+            padding: 1.1rem 1.25rem;
+            font-family: var(--mono);
+            font-size: 0.82rem;
+            color: #d1d5db;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .ft-dir {
+            color: #93c5fd;
+            font-weight: 500;
+        }
+
+        .ft-provided {
+            color: #86efac;
+        }
+
+        .ft-todo {
+            color: #fca5a5;
+        }
+
+        .ft-optional {
+            color: #fde68a;
+        }
+
+        /* RUBRICA */
+        .rubric-module {
+            margin-bottom: 1.75rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .rubric-module-header {
+            color: white;
+            padding: 0.9rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .rubric-module-header.h-0612 {
+            background: var(--blue-mid);
+        }
+
+        .rubric-module-header.h-0485 {
+            background: var(--green);
+        }
+
+        .rubric-module-header.h-0615 {
+            background: #b45309;
+        }
+
+        .rubric-module-header.h-0489 {
+            background: var(--purple);
+        }
+
+        .rubric-module-header h3 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .rubric-module-header .mod-code {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.18);
+            padding: 0.2rem 0.6rem;
+            border-radius: 5px;
+            white-space: nowrap;
+        }
+
+        .rubric-ra {
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .rubric-ra-header {
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .rubric-ra-header.rh-0612 {
+            background: #edf4f8;
+        }
+
+        .rubric-ra-header.rh-0485 {
+            background: #edf7f2;
+        }
+
+        .rubric-ra-header.rh-0615 {
+            background: #fdf5e8;
+        }
+
+        .rubric-ra-header.rh-0489 {
+            background: #f3effe;
+        }
+
+        .rubric-ra-header .ra-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .rubric-ra-header.rh-0612 .ra-title {
+            color: var(--blue);
+        }
+
+        .rubric-ra-header.rh-0485 .ra-title {
+            color: var(--green);
+        }
+
+        .rubric-ra-header.rh-0615 .ra-title {
+            color: #92400e;
+        }
+
+        .rubric-ra-header.rh-0489 .ra-title {
+            color: var(--purple);
+        }
+
+        .rubric-ra-header .ra-weight {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--gray-600);
+            white-space: nowrap;
+        }
+
+        table.criteria {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+        }
+
+        table.criteria thead th {
+            background: var(--gray-100);
+            padding: 0.55rem 0.9rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray-600);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        table.criteria thead th:nth-child(n+2) {
+            text-align: center;
+            width: 65px;
+        }
+
+        table.criteria tbody td {
+            padding: 0.55rem 0.9rem;
+            border-bottom: 1px solid var(--gray-200);
+            vertical-align: top;
+            color: var(--gray-800);
+        }
+
+        table.criteria tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        table.criteria tbody tr:nth-child(even) td {
+            background: #fafafa;
+        }
+
+        table.criteria td:nth-child(n+2) {
+            text-align: center;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            vertical-align: middle;
+        }
+
+        .score-0 {
+            color: #b91c1c;
+        }
+
+        .score-5 {
+            color: #92400e;
+        }
+
+        .score-7 {
+            color: #1e40af;
+        }
+
+        .score-10 {
+            color: #065f46;
+        }
+
+        .ra-total-row {
+            padding: 0.6rem 1.25rem;
+            background: var(--gray-100);
+            border-top: 2px solid var(--gray-300);
+            font-size: 0.82rem;
+            color: var(--gray-600);
+            font-style: italic;
+        }
+
+        /* GRADE FORMULA */
+        .grade-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+            font-size: 0.88rem;
+        }
+
+        .grade-table th {
+            padding: 0.6rem 1rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray-600);
+            background: var(--gray-100);
+            border-bottom: 2px solid var(--gray-300);
+            text-align: left;
+        }
+
+        .grade-table td {
+            padding: 0.65rem 1rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .grade-table tr.total-row td {
+            background: var(--blue);
+            color: white;
+            font-weight: 700;
+        }
+
+        .grade-table .pill-mod {
+            display: inline-block;
+            padding: 0.15rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .pill-0612 {
+            background: var(--blue-mid);
+        }
+
+        .pill-0485 {
+            background: var(--green);
+        }
+
+        .pill-0615 {
+            background: #b45309;
+        }
+
+        .pill-0489 {
+            background: var(--purple);
+        }
+
+        /* TAGS */
+        .tag {
+            display: inline-block;
+            border-radius: 5px;
+            padding: 0.15rem 0.55rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-right: 0.3rem;
+        }
+
+        .tag-red {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .tag-green {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .tag-blue {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .tag-yellow {
+            background: #fef9c3;
+            color: #854d0e;
+        }
+
+        .doc-footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+
+        @media print {
+            body {
+                background: white;
+                font-size: 12px;
+            }
+
+            .cover,
+            .rubric-module-header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .section {
+                box-shadow: none;
+                border: 1px solid var(--gray-200);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- COVER -->
+    <div class="cover">
+        <span class="cover-tag">CFGS DAW — Pràctica integradora</span>
+        <h1>Pràctica: <span>PokéDex Web</span></h1>
+        <p class="cover-sub">Aplicació web multi-pàgina amb consum d'API REST, manipulació del DOM, OOP, gestió d'estat
+            local i sistema de batalla.</p>
+        <div class="cover-meta">
+            <div class="cover-meta-item"><span class="label">Durada</span><span class="value">1 setmana</span></div>
+            <div class="cover-meta-item"><span class="label">Modalitat</span><span class="value">Individual</span></div>
+            <div class="cover-meta-item"><span class="label">Lliurament</span><span class="value">Repositori</span>
+            </div>
+            <div class="cover-meta-item"><span class="label">Mòduls avaluats</span><span class="value">0612 · 0485 ·
+                    0615 · 0489</span></div>
+        </div>
+        <div class="module-pills">
+            <span class="mpill mpill-0612">0612 DWEC</span>
+            <span class="mpill mpill-0485">0485 Programació</span>
+            <span class="mpill mpill-0615">0615 DIW</span>
+            <span class="mpill mpill-0489">0489 MPO (PMDM)</span>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- ══════════════════════════════════════
+     PART 1 · ENUNCIAT
+     ══════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-header">
+                <div class="num">1</div>
+                <h2>Descripció del projecte</h2>
+            </div>
+            <div class="section-body">
+                <p>Has de construir una <strong>PokéDex web</strong> de múltiples pàgines que permeti cercar Pokémon,
+                    consultar-ne el detall i disputar batalles simulades. L'aplicació consumirà l'API pública
+                    <strong>PokéAPI</strong> (<code>https://pokeapi.co/api/v2</code>) per obtenir totes les dades en
+                    temps real.
+                </p>
+                <p>Se t'entrega l'estructura HTML de l'index, que no pots modificar, i els fulls d'estil CSS de totes
+                    les pàgines. A banda el fitxer per consumir l'API amb el nom de les funcions que no podras
+                    modificar. <strong>La teva tasca és
+                        implementar tot el JavaScript</strong> que doni vida a l'aplicació, incloent-hi la lògica de
+                    batalla, i els <strong>estils CSS</strong>.</p>
+
+                <div class="callout callout-blue">
+                    <strong>API de referència</strong>
+                    Explora l'API des del navegador: <code>https://pokeapi.co/api/v2/pokemon/25</code> per a dades d'un
+                    Pokémon, o <code>https://pokeapi.co/api/v2/pokemon?limit=151</code> per al llistat. Llegeix la
+                    documentació oficial a <code>pokeapi.co/docs/v2</code> per entendre tots els endpoints disponibles.
+                </div>
+
+                <h3>Pàgines i funcionalitats</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="fc-title">🏠 index.html — Buscador <span
+                                class="fc-badge fc-badge-required">Obligatori</span></div>
+                        <ul>
+                            <li>Carrega i mostra els primers 151 Pokémon en graella</li>
+                            <li>Cerca en temps real per nom o número</li>
+                            <li>Cada targeta navega a la pàgina de detall</li>
+                            <li>Mostra tipus amb colors corresponents</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="fc-title">🔍 details.html — Detall <span
+                                class="fc-badge fc-badge-required">Obligatori</span></div>
+                        <ul>
+                            <li>Carrega el Pokémon des del paràmetre URL <code>?id=25</code></li>
+                            <li>Stats amb barres animades (CSS transition)</li>
+                            <li>Cadena evolutiva i moviments en taula</li>
+                            <li>Alçada, pes, tipus</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="fc-title">🎒 my_pokemons.html — Col·lecció <span
+                                class="fc-badge fc-badge-required">Obligatori</span></div>
+                        <ul>
+                            <li>Mostra Pokémon capturats (persistits al <code>localStorage</code>)</li>
+                            <li>Permet ordenar per nom, nivell i número</li>
+                            <li>Persisteix entre sessions del navegador</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="fc-title">🌿 hunt.html — Caça <span
+                                class="fc-badge fc-badge-required">Obligatori</span></div>
+                        <ul>
+                            <li>Clic a la zona genera un Pokémon salvatge aleatori</li>
+                            <li>Mostra silueta fosca fins que es revela</li>
+                            <li>Botó "Lluitar" navega a battle.html via <code>sessionStorage</code></li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="fc-title">⚔️ battle.html — Batalla <span
+                                class="fc-badge fc-badge-required">Obligatori</span></div>
+                        <ul>
+                            <li>Combat per torns amb lògica de dany basada en stats</li>
+                            <li>Barres de HP animades, log de combat</li>
+                            <li>Pantalles de victòria/derrota</li>
+                            <li>En victòria guarda el Pokémon al <code>localStorage</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Dissenys</h3>
+                <a href="/docs/pokedex_design.png" target="_blank"><img src="/docs/pokedex_design.png"
+                        alt="Disseny de la PokéDex" width="100%"></a>
+                <h3>Requisits tècnics de JavaScript</h3>
+                <ul>
+                    <li><strong>Programació modular:</strong> cada pàgina té el seu fitxer JS; la lògica compartida
+                        (API, storage, model) va a mòduls independents (<code>api.js</code>, <code>pokemon.js</code>,
+                        <code>storage.js</code>…).
+                    </li>
+                    <li><strong>OOP:</strong> classe <code>Pokemon</code> amb propietats, mètodes i constructor. La
+                        lògica de combat ha d'estar encapsulada en una classe <code>Battle</code> o mòdul equivalent.
+                        Valora usar herència o composició si té sentit.</li>
+                    <li><strong>Try/Catch:</strong> Han de ser explícits. Els errors de xarxa han de mostrar feedback a
+                        la UI.
+                    </li>
+                    <li><strong>Manipulació del DOM:</strong> construeix elements amb <code>createElement</code> i
+                        <code>textContent</code>; evita <code>innerHTML</code> amb strings no sanititzats.
+                    </li>
+                    <li><strong>Funcions d'ordre superior:</strong> utilitza <code>map</code>, <code>filter</code>,
+                        <code>find</code>, <code>reduce</code> per tractar les dades de l'API.
+                    </li>
+                    <li><strong>Gestió d'estat:</strong> <code>localStorage</code> per a la col·lecció;
+                        <code>sessionStorage</code> per transferir el Pokémon salvatge a la batalla.
+                    </li>
+                </ul>
+
+                <div class="callout callout-red">
+                    <strong>🚫 Queda prohibit</strong>
+                    Frameworks JS (React, Vue…), llibreries de tercers no autoritzades (jQuery, Lodash…), o IA
+                    generativa per escriure el codi. Pots usar la documentació de MDN, PokéAPI, i els apunts
+                    del mòdul.
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════
+     PART 2 · RÚBRICA
+     ══════════════════════════════════════ -->
+        <div class="section">
+            <div class="section-header">
+                <div class="num">2</div>
+                <h2>Rúbrica d'avaluació</h2>
+            </div>
+            <div class="section-body">
+
+                <p>Cada <strong>Resultat d'Aprenentatge (RA)</strong> es puntua de <strong>0 a 10</strong>. La nota del
+                    RA surt de la mitjana ponderada dels seus criteris.</p>
+
+                <div class="callout callout-blue">
+                    <strong>Llegenda</strong>
+                    <b>0</b> = No assolit / absent &nbsp;|&nbsp;
+                    <b>5</b> = Assolit parcialment (errors importants) &nbsp;|&nbsp;
+                    <b>7</b> = Assolit amb algun error menor &nbsp;|&nbsp;
+                    <b>10</b> = Assolit completament
+                </div>
+
+                <!-- ═══ 0612 ═══ -->
+                <div class="rubric-module">
+                    <div class="rubric-module-header h-0612">
+                        <h3>0612 — Desenvolupament web en entorn client (DWEC)</h3>
+                    </div>
+
+                    <div class="rubric-ra">
+                        <div class="rubric-ra-header rh-0612">
+                            <span class="ra-title">RA2 · Sentències, sintaxi i fonaments del llenguatge</span>
+                        </div>
+                        <table class="criteria">
+                            <thead>
+                                <tr>
+                                    <th>Criteri</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                    <th>7</th>
+                                    <th>10</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>2.2</strong> Usa correctament <code>const</code>/<code>let</code>,
+                                        operadors (lògics, ternari, nullish coalescing…)</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2.3</strong> Respecta l'àmbit de les variables (scope de bloc, funció,
+                                        mòdul); no fuites a <code>window</code></td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2.5/2.6</strong> Usa estructures de decisió i bucles de forma adequada i
+                                        idiomàtica</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2.7</strong> El codi té comentaris JSDoc als mòduls i funcions
+                                        principals</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="ra-total-row">Nota RA2 = mitjana dels 4 criteris</div>
+                    </div>
+
+                    <div class="rubric-ra">
+                        <div class="rubric-ra-header rh-0612">
+                            <span class="ra-title">RA3 · Objectes predefinits del navegador i emmagatzematge</span>
+                        </div>
+                        <table class="criteria">
+                            <thead>
+                                <tr>
+                                    <th>Criteri</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                    <th>7</th>
+                                    <th>10</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>3.2/3.3</strong> Usa <code>window</code>, <code>location</code>,
+                                        <code>URLSearchParams</code> per a la navegació entre pàgines i lectura de
+                                        paràmetres URL
+                                    </td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.4</strong> Genera elements HTML des de JS sense <code>innerHTML</code>
+                                        amb strings arbitraris (usa <code>createElement</code>,
+                                        <code>textContent</code>, <code>dataset</code>…)
+                                    </td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.7</strong> <code>localStorage</code> i <code>sessionStorage</code>
+                                        usen JSON serialitzat correctament; gestiona el cas de valor <code>null</code>
+                                        (primera execució)</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="ra-total-row">Nota RA3 = mitjana dels 3 criteris</div>
+                    </div>
+
+                    <div class="rubric-ra">
+                        <div class="rubric-ra-header rh-0612">
+                            <span class="ra-title">RA4 · Estructures definides per l'usuari: funcions, arrays, OOP,
+                                patrons</span>
+                        </div>
+                        <table class="criteria">
+                            <thead>
+                                <tr>
+                                    <th>Criteri</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                    <th>7</th>
+                                    <th>10</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>3.2</strong> Funcions amb responsabilitat única, ben parametritzades i
+                                        reutilitzables</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.3/3.4/3.5</strong> Arrays tractats amb HOF (<code>map</code>,
+                                        <code>filter</code>, <code>find</code>, <code>sort</code>, <code>reduce</code>…)
+                                        de forma adequada al context
+                                    </td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.6/3.7/3.8</strong> Existeix una classe <code>Pokemon</code> amb
+                                        propietats, mètodes i constructor que encapsula les dades; s'instancia
+                                        correctament</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.9</strong> La lògica de combat és mètodes d'una classe o mòdul
+                                        (<code>Battle</code>); no hi ha lògica de joc dispersa als event handlers</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.10</strong> Separació de concerns visible: capa de dades (api.js),
+                                        model (pokemon.js), presentació (*.js per pàgina)</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="ra-total-row">Nota RA4 = mitjana dels 5 criteris</div>
+                    </div>
+
+                    <div class="rubric-ra">
+                        <div class="rubric-ra-header rh-0612">
+                            <span class="ra-title">RA5 · Aplicacions interactives: esdeveniments i formularis</span>
+                            <span class="ra-weight">Pes en 0612: 15%</span>
+                        </div>
+                        <table class="criteria">
+                            <thead>
+                                <tr>
+                                    <th>Criteri</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                    <th>7</th>
+                                    <th>10</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>5.3/5.4</strong> Captura i gestiona diversos tipus d'events
+                                        (<code>click</code>, <code>input</code>, <code>keyup</code>,
+                                        <code>DOMContentLoaded</code>) de forma correcta
+                                    </td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>5.5/5.6</strong> La cerca en temps real filtra la llista visible sense
+                                        recarregar la pàgina; la resposta visual és immediata</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="ra-total-row">Nota RA5 = mitjana dels 2 criteris</div>
+                    </div>
+
+                    <div class="rubric-ra">
+                        <div class="rubric-ra-header rh-0612">
+                            <span class="ra-title">RA6 · Model d'objectes del document (DOM)</span>
+                        </div>
+                        <table class="criteria">
+                            <thead>
+                                <tr>
+                                    <th>Criteri</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                    <th>7</th>
+                                    <th>10</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>6.1/6.2</strong> Selecciona elements del DOM amb selectorsadequats i
+                                        accedeix a les seves propietats/mètodes</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>6.3/6.4</strong> Crea, omple i insereix/elimina elements dinàmicament de
+                                        forma correcta (les targetes, les files de la taula, els items d'evolució…)</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>6.5</strong> Associa events als elements creats dinàmicament (delegació
+                                        o listeners directes ben gestionats)</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>6.8</strong> Separació de les tres capes: el JS manipula classes CSS, no
+                                        estils inline arbitraris</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="ra-total-row">Nota RA6 = mitjana dels 4 criteris</div>
+                    </div>
+
+                    <div class="rubric-ra">
+                        <div class="rubric-ra-header rh-0612">
+                            <span class="ra-title">RA7 · Comunicació asíncrona client–servidor (AJAX / Fetch)</span>
+                        </div>
+                        <table class="criteria">
+                            <thead>
+                                <tr>
+                                    <th>Criteri</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                    <th>7</th>
+                                    <th>10</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>1.3/1.4</strong> Totes les crides usen <code>fetch</code> amb
+                                        <code>async/await</code>; gestiona el cicle complet de la promesa
+                                    </td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>1.5</strong> Actualitza el DOM amb les dades rebudes sense recarregar la
+                                        pàgina; estats de càrrega visibles</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>1.6</strong> Parseja correctament JSON niuat (stats, moves, evolution
+                                        chain) i accedeix als camps adequats</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Error handling</strong> Els errors de xarxa o respostes no-OK (404, 500)
+                                        mostren missatge a la UI, no només a la consola</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="ra-total-row">Nota RA7 = mitjana dels 4 criteris</div>
+                    </div>
+                </div><!-- /0612 -->
+
+                <!-- ═══ 0485 ═══ -->
+                <div class="rubric-module">
+                    <div class="rubric-module-header h-0485">
+                        <h3>0485 — Programació (en JavaScript)</h3>
+                    </div>
+
+                    <div class="rubric-ra">
+                        <div class="rubric-ra-header rh-0485">
+                            <span class="ra-title">RA2 · Programació orientada a objectes: fonaments i
+                                instanciació</span>
+                        </div>
+                        <table class="criteria">
+                            <thead>
+                                <tr>
+                                    <th>Criteri</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                    <th>7</th>
+                                    <th>10</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>2.3/2.4</strong> Instancia objectes de classes pròpies
+                                        (<code>Pokemon</code>, <code>Battle</code>…) i usa els seus mètodes i propietats
+                                        correctament</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>2.6/2.8</strong> Defineix i usa constructors amb paràmetres; els mètodes
+                                        reben i retornen valors de forma correcta</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="ra-total-row">Nota RA2 (0485) = mitjana dels 2 criteris</div>
+                    </div>
+
+                    <div class="rubric-ra">
+                        <div class="rubric-ra-header rh-0485">
+                            <span class="ra-title">RA4 · Programació orientada a objectes avançada: encapsulació,
+                                herència i visibilitat</span>
+                        </div>
+                        <table class="criteria">
+                            <thead>
+                                <tr>
+                                    <th>Criteri</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                    <th>7</th>
+                                    <th>10</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>4.2/4.3</strong> Les classes tenen propietats i mètodes ben definits;
+                                        s'usen modificadors de visibilitat (<code>#</code> per a privats) on té sentit
+                                    </td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4.7</strong> Hi ha almenys una relació d'herència coherent (per exemple,
+                                        <code>WildPokemon extends Pokemon</code>, o
+                                        <code>CapturedPokemon extends Pokemon</code> amb atributs addicionals com el
+                                        nivell)
+                                    </td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>4.8</strong> Existeix almenys un mètode o propietat estàtica
+                                        (<code>static</code>) amb sentit semàntic real (per exemple,
+                                        <code>Pokemon.fromApiData()</code> o <code>Battle.calculateDamage()</code>)
+                                    </td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="ra-total-row">Nota RA4 (0485) = mitjana dels 3 criteris</div>
+                    </div>
+
+                    <div class="rubric-ra">
+                        <div class="rubric-ra-header rh-0485">
+                            <span class="ra-title">RA6 · Estructures d'emmagatzematge: arrays, col·leccions i operacions
+                                agregades</span>
+                        </div>
+                        <table class="criteria">
+                            <thead>
+                                <tr>
+                                    <th>Criteri</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                    <th>7</th>
+                                    <th>10</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>6.1/6.2</strong> Usa arrays de forma idiomàtica; coneix i aplica mètodes
+                                        natius (<code>push</code>, <code>splice</code>, <code>slice</code>,
+                                        <code>includes</code>…)
+                                    </td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>6.7</strong> Usa operacions agregades (<code>filter</code>,
+                                        <code>map</code>, <code>reduce</code>, <code>sort</code>) per tractar la llista
+                                        de Pokémon o la col·lecció capturada
+                                    </td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="ra-total-row">Nota RA6 (0485) = mitjana dels 2 criteris</div>
+                    </div>
+
+                    <div class="rubric-ra">
+                        <div class="rubric-ra-header rh-0485">
+                            <span class="ra-title">RA3 · Estructures de control i gestió d'excepcions</span>
+                        </div>
+                        <table class="criteria">
+                            <thead>
+                                <tr>
+                                    <th>Criteri</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                    <th>7</th>
+                                    <th>10</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>3.4/3.8</strong> Usa <code>try/catch</code> per gestionar errors de
+                                        xarxa i de parsing; llança excepcions pròpies (<code>throw new Error(…)</code>)
+                                        quan escau (per ex., Pokémon no trobat, storage corromput)</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.6/3.7</strong> El codi no té errors de consola no gestionats en un
+                                        flux normal d'ús; els errors excepcionals estan documentats</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="ra-total-row">Nota RA3 (0485) = mitjana dels 2 criteris</div>
+                    </div>
+                </div><!-- /0485 -->
+
+                <!-- ═══ 0615 ═══ -->
+                <div class="rubric-module">
+                    <div class="rubric-module-header h-0615">
+                        <h3>0615 — Disseny d'interfícies web</h3>
+                    </div>
+
+                    <div class="rubric-ra">
+                        <div class="rubric-ra-header rh-0615">
+                            <span class="ra-title">RA4 · Integra contingut multimèdia i elements interactius als
+                                documents web</span>
+                        </div>
+                        <table class="criteria">
+                            <thead>
+                                <tr>
+                                    <th>Criteri</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                    <th>7</th>
+                                    <th>10</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>3.5/3.6</strong> Els sprites i imatges de l'API es carreguen, es mostren
+                                        i interactuen correctament a totes les pàgines</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>3.7</strong> L'aplicació funciona sense errors de consola no gestionats
+                                        a Chrome i Firefox actuals</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="ra-total-row">Nota RA4 (0615) = mitjana dels 2 criteris</div>
+                    </div>
+
+                    <div class="rubric-ra">
+                        <div class="rubric-ra-header rh-0615">
+                            <span class="ra-title">RA6 · Interfícies web amigables: usabilitat i consistència</span>
+                        </div>
+                        <table class="criteria">
+                            <thead>
+                                <tr>
+                                    <th>Criteri</th>
+                                    <th>0</th>
+                                    <th>5</th>
+                                    <th>7</th>
+                                    <th>10</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>51/55</strong> L'usuari sempre sap on és: feedback visible de càrrega,
+                                        errors i estats de la batalla (heurística de Nielsen: visibilitat de l'estat del
+                                        sistema)</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>53/56</strong> Navegació consistent entre pàgines; la nav activa és
+                                        correcta; no hi ha dead-ends (sempre es pot tornar)</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>54</strong> Interacció amb ratolí i teclat (cerca) funciona de forma
+                                        intuïtiva sense bugs aparents</td>
+                                    <td class="score-0">0</td>
+                                    <td class="score-5">5</td>
+                                    <td class="score-7">7</td>
+                                    <td class="score-10">10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="ra-total-row">Nota RA6 (0615) = mitjana dels 3 criteris</div>
+                    </div>
+                </div><!-- /0615 -->
+
+                <!-- NOTA FINAL -->
+                <h3>A tenir en compte per a les notes</h3>
+
+                <p>
+                    Tots els criteris han d'haver puntuat per sobre del 0 per aprovar l'RA.
+                    Un RA amb note inferior a 6 implica que l'alumne/a no ha assolit els objectius mínims de l'RA, i per
+                    tant, no pot aprovar l'RA.
+                </p>
+
+
+                <div class="callout callout-red">
+                    <strong>Condicions de suspens automàtic</strong>
+                    Si cap de les 5 pàgines té JavaScript funcional, o si el projecte no s'obre correctament al
+                    navegador, la pràctica es considera no presentada (nota 0 a tots els mòduls).
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ENTREGA -->
+        <div class="section">
+            <div class="section-header">
+                <div class="num">3</div>
+                <h2>Criteris d'entrega</h2>
+            </div>
+            <div class="section-body">
+                <ul>
+                    <li><span class="tag tag-red">Obligatori</span> El projecte s'ha de poder obrir al navegador sense
+                        servidor (o indicar com aixecar-lo si cal).</li>
+                    <li><span class="tag tag-green">Recomanat</span> Repositori Git amb historial de commits
+                        <strong>significatiu</strong>.
+                    </li>
+                    <li><span class="tag tag-blue">Recomanat</span> <code>README.md</code> indicant funcionalitats
+                        implementades, pendents i instruccions d'execució.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div><!-- /container -->
+    <div class="doc-footer">
+        MVM · CFGS DAW — Mòduls 0612 · 0485 · 0615 · 0489 &nbsp;|&nbsp; Generalitat de Catalunya — Departament
+        d'Educació
+        &nbsp;|&nbsp; Ús intern docent
+    </div>
+</body>
+
+</html>

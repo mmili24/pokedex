@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéDex - Batalla</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/battle.css">
+    <link rel="icon" href="/icon.png">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://img.icons8.com/color/48/pokeball--v1.png" alt="Pokeball">
+            <h1>PokéDex</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Inici</a></li>
+                <li><a href="my_pokemons.html">Els meus Pokémon</a></li>
+                <li><a href="hunt.html" class="active">Caça</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="battle-scene">
+
+            <div class="player-side">
+                <img id="playerSprite" src="" alt="El teu Pokémon">
+                <div class="player-info">
+                    <span id="playerName">???</span>
+                    <div class="hp-bar-container">
+                        <div id="playerHpBar" class="hp-bar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="enemy-side">
+                <div class="enemy-info">
+                    <span id="enemyName">???</span>
+                    <div class="hp-bar-container">
+                        <div id="enemyHpBar" class="hp-bar"></div>
+                    </div>
+                </div>
+                <img id="enemySprite" src="" alt="Enemic">
+            </div>
+
+        </div>
+
+        <div class="battle-ui">
+            <div class="battle-actions">
+                <button id="attackBtn">⚔️ Atacar</button>
+                <button id="fleeBtn">🏃 Huir</button>
+            </div>
+            <div class="battle-log">
+                <p id="battleLog">La batalla comença!</p>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="src/api.js"></script>
+    <script src="src/pokemon.js"></script>
+    <script src="src/storage.js"></script>
+    <script src="src/battle.js"></script>
+</body>
+</html>

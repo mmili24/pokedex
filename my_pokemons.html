@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéDex - Els meus Pokémon</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/my_pokemons.css">
+    <link rel="icon" href="/icon.png">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://img.icons8.com/color/48/pokeball--v1.png" alt="Pokeball">
+            <h1>PokéDex</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Inici</a></li>
+                <li><a href="my_pokemons.html" class="active">Els meus Pokémon</a></li>
+                <li><a href="hunt.html">Caça</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Els meus Pokémon</h2>
+        </section>
+
+        <section class="main-content">
+            <div class="sort-buttons">
+                <button id="sortByName">Ordenar per nom</button>
+                <button id="sortByLevel">Ordenar per nivell</button>
+                <button id="sortById">Ordenar per número</button>
+            </div>
+            <div id="myPokemonGrid" class="pokemon-grid"></div>
+        </section>
+    </main>
+
+    <script src="src/api.js"></script>
+    <script src="src/pokemon.js"></script>
+    <script src="src/storage.js"></script>
+    <script src="src/my_pokemons.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+.hero {
+    background-color: #CD3F3B; 
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.hero h2 {
+    font-size: 56px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.search-container {
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 30px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    opacity: 0.5;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+}
+
+.main-content {
+    margin-top: -30px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter-section {
+    margin-bottom: 30px;
+}
+
+.filter-dropdown {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.pokemon-grid {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1000px;
+    padding-bottom: 50px;
+}
+
+.pokemon-grid div {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.pokemon-grid div:hover {
+    transform: scale(1.1);
+}
+
+.pokemon-grid img {
+    width: 80px;
+    height: 80px;
+}
+
+.pokemon-grid p {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    margin-top: 5px;
+}

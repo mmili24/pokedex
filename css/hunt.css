@@ -1,0 +1,70 @@
+.hunt-zone {
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-image: url('../src/assets/hunt_bg.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hunt-zone::before {
+    content: "Busca Pokémon salvatges!";
+    position: absolute;
+    top: 20px;
+    background: white;
+    padding: 10px 30px;
+    border-radius: 50px;
+    border: 3px solid #333;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.pokemon-popup {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    border: 3px solid #333;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    width: 250px;
+    animation: popIn 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+.silhouette {
+    filter: brightness(0);
+    width: 150px;
+    height: 150px;
+    margin: 10px 0;
+}
+
+#fightBtn {
+    background-color: #CD3F3B;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.1s;
+    width: 100%;
+}
+
+#fightBtn:hover {
+    background-color: #CD3F3B;
+    transform: scale(1.05);
+}
+
+@keyframes popIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
